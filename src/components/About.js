@@ -7,7 +7,7 @@ const About = () => (
     <section>
       <p>
         This application simulates a Pokédex, a
-         digital encliclopedia containing all Pokémons
+        digital encliclopedia containing all Pokémons
       </p>
       <p>One can filter Pokémons by type, and see more details for each one of them</p>
       <img
