@@ -49,7 +49,7 @@ describe('1. Testando o arquivo App.js', () => {
 
   it('Teste se a aplicação é redirecionada para a página Not Found', () => {
     const { getByText, history } = renderWithRouter(<App />);
-    history.push('/notfound')
+    history.push('/notfound');
     expect(history.location.pathname).toBe('/notfound');
     const notFound = getByText(/Page requested not found/);
     expect(notFound).toBeInTheDocument();
