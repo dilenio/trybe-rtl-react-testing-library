@@ -25,4 +25,33 @@ describe('1. Testando o arquivo App.js', () => {
     fireEvent.click(favorite);
     expect(history.location.pathname).toBe('/favorites');
   });
+
+  it('Teste se a aplicação é redirecionada para a página inicial', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    const home = getByText('Home');
+    fireEvent.click(home);
+    expect(history.location.pathname).toBe('/');
+  });
+
+  it('Teste se a aplicação é redirecionada para a página de About', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    const about = getByText('About');
+    fireEvent.click(about);
+    expect(history.location.pathname).toBe('/about');
+  });
+
+  it('Teste se a aplicação é redirecionada para a página de Pokémons Favoritado', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    const favorite = getByText('Favorite Pokémons');
+    fireEvent.click(favorite);
+    expect(history.location.pathname).toBe('/favorites');
+  });
+
+  it('Teste se a aplicação é redirecionada para a página Not Found', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    history.push('/notfound')
+    expect(history.location.pathname).toBe('/notfound');
+    const notFound = getByText(/Page requested not found/);
+    expect(notFound).toBeInTheDocument();
+  });
 });
