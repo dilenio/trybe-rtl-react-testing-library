@@ -5,3 +5,5 @@ src/components/*
 src/services/*
 coverage/*
 src/serviceWorker.js
+node_modules/
+reports/
