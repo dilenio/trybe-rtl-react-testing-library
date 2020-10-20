@@ -16,7 +16,7 @@ describe('4. Testando o arquivo NotFound.js', () => {
     const image = getAllByRole('img')[1];
     expect(image).toHaveAttribute(
       'src',
-      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif'
+      'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif',
     );
   });
 });
