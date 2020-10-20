@@ -2,6 +2,7 @@ import React from 'react';
 import renderWithRouter from './helpers/renderWithRouter';
 import About from '../components/About';
 
+// Primeiro teste
 describe('2. Testando o arquivo About.js', () => {
   it('Teste se a página contém as informações sobre a Pokédex.', () => {
     const { getByText, history } = renderWithRouter(<About />);
