@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import NotFound from '../components/NotFound';
 
@@ -18,6 +17,6 @@ describe('4. Testando o arquivo NotFound.js', () => {
     expect(image).toHaveAttribute(
       'src',
       'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif'
-    )
+    );
   });
 });
