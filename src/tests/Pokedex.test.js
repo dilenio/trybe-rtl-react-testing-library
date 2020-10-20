@@ -1,6 +1,6 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
-import { fireEvent, getByTestId } from '@testing-library/react';
 import Pokedex from '../components/Pokedex';
 import pokemons from './helpers/favoriteData';
 import favorite from './helpers/favoritePokemons';
@@ -11,7 +11,7 @@ describe('5. Testando o arquivo Pokedex.js', () => {
       pokemons={ pokemons }
       isPokemonFavoriteById={ favorite }
     />);
-    const btn = getByRole('button', { name: 'Próximo pokémon'});
+    const btn = getByRole('button', { name: 'Próximo pokémon' });
     expect(btn).toBeDefined();
     const poke1 = getByText(/Charmander/i);
     expect(poke1).toBeInTheDocument();
@@ -41,8 +41,8 @@ describe('5. Testando o arquivo Pokedex.js', () => {
       isPokemonFavoriteById={ favorite }
     />);
     const pokeTypes = ['Fire', 'Electric'];
-    pokeTypes.forEach(element => {
-      const btn = getByRole('button', { name: element});
+    pokeTypes.forEach((element) => {
+      const btn = getByRole('button', { name: element });
       expect(btn).toBeDefined();
       fireEvent.click(btn);
       const poke1 = getByTestId('pokemonType');
