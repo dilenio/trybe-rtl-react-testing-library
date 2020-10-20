@@ -1,7 +1,6 @@
 import React from 'react';
 import renderWithRouter from './helpers/renderWithRouter';
 import About from '../components/About';
-import { getAllByText } from '@testing-library/react';
 
 describe('2. Testando o arquivo About.js', () => {
   it('Teste se a página contém as informações sobre a Pokédex.', () => {
@@ -14,10 +13,10 @@ describe('2. Testando o arquivo About.js', () => {
   });
 
   it('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
-    const { getAllByText, getAllByRole } = renderWithRouter(<About />);
+    const { getAllByText } = renderWithRouter(<About />);
     const text = getAllByText(/Pokémons/i);
-
-    expect(text.length).toBe(2);
+    const two = 2;
+    expect(text.length).toBe(two);
   });
 
   it('Teste se a página contém a seguinte imagem de uma Pokédex', () => {
