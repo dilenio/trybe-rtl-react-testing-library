@@ -27,7 +27,7 @@ const pokemons = [
         map: 'https://cdn.bulbagarden.net/upload/6/6f/Kanto_Rock_Tunnel_Map.png',
       },
     ],
-    summary: 'The flame on its tail shows the strength of its life force. If it is weak, the flame also burns weakly.',
+    summary: 'The flame on its tail shows the strength of its life force.',
   },
   {
     id: 25,
@@ -49,7 +49,7 @@ const pokemons = [
         map: 'https://cdn.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png',
       },
     ],
-    summary: 'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.',
+    summary: 'This intelligent Pokémon roasts hard berries',
   },
 ];
 
