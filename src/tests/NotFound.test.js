@@ -3,14 +3,14 @@ import renderWithRouter from './helpers/renderWithRouter';
 import NotFound from '../components/NotFound';
 
 describe('4. Testando o arquivo NotFound.js', () => {
-  test('Teste se página contém um heading h2 - Page requested not found', () => {
+  it('Teste se página contém um heading h2 - Page requested not found', () => {
     const { getByRole } = renderWithRouter(<NotFound />);
 
     const heading = getByRole('heading', { name: /Page requested not found/i });
     expect(heading).toBeInTheDocument();
   });
 
-  test('Teste se página mostra a imagem', () => {
+  it('Teste se página mostra a imagem', () => {
     const { getAllByRole } = renderWithRouter(<NotFound />);
 
     const image = getAllByRole('img')[1];
