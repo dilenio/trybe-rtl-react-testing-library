@@ -14,7 +14,7 @@ describe('6. Testando o arquivo Pokemon.js', () => {
     const poke1 = getByTestId('pokemon-name');
     expect(poke1).toHaveTextContent(/Charmander/i);
     const poke1Average = getByTestId('pokemon-weight');
-    expect(poke1Average).toHaveTextContent(/Average weight: 8.5 kg/i);
+    expect(poke1Average).toHaveTextContent('Average weight: 8.5 kg');
     const image = getByRole('img', {
       name: 'Charmander sprite',
       src: 'https://cdn.bulbagarden.net/upload/0/0a/Spr_5b_004.png',
