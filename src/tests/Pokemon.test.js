@@ -69,5 +69,6 @@ describe('6. Testando o arquivo Pokemon.js', () => {
       'src',
       '/star-icon.svg',
     );
+    expect(star).toBeDefined();
   });
 });
