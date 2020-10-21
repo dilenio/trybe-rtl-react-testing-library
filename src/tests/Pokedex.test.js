@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, getAllByTestId } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import Pokedex from '../components/Pokedex';
 import pokemons from './helpers/favoriteData';
@@ -21,6 +21,8 @@ describe('5. Testando o arquivo Pokedex.js', () => {
     fireEvent.click(btn);
     const poke3 = getByText(/Charmander/i);
     expect(poke3).toBeInTheDocument();
+    const title = getByText(/Encountered pokémons/i);
+    expect(title).toBeInTheDocument();
   });
 
   it('Teste se é mostrado apenas um Pokémon por vez.', () => {
@@ -36,7 +38,7 @@ describe('5. Testando o arquivo Pokedex.js', () => {
   });
 
   it('Teste se a Pokédex tem os botões de filtro', () => {
-    const { getByRole, getByTestId } = renderWithRouter(<Pokedex
+    const { getByRole, getByTestId, getAllByTestId } = renderWithRouter(<Pokedex
       pokemons={ pokemons }
       isPokemonFavoriteById={ favorite }
     />);
@@ -48,6 +50,9 @@ describe('5. Testando o arquivo Pokedex.js', () => {
       const poke1 = getByTestId('pokemonType');
       expect(poke1).toHaveTextContent(element);
     });
+    const two = 2;
+    const allBtn = getAllByTestId('pokemon-type-button');
+    expect(allBtn.length).toBe(two);
   });
 
   it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
@@ -73,10 +78,10 @@ describe('5. Testando o arquivo Pokedex.js', () => {
       pokemons={ pokemons }
       isPokemonFavoriteById={ favorite }
     />);
-    const allBtn = getByRole('button', { name: 'All' });
-    expect(allBtn).toBeDefined();
     const pokeTypes = ['Fire', 'Electric'];
     pokeTypes.forEach((typePoke) => {
+      const allBtn = getByRole('button', { name: 'All' });
+      expect(allBtn).toBeDefined();
       const typeBtn = getByRole('button', { name: typePoke });
       expect(typeBtn).toBeDefined();
       fireEvent.click(typeBtn);
