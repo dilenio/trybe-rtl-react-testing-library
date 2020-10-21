@@ -73,13 +73,15 @@ describe('7. Testando o arquivo PokemonDetails.js', () => {
   it('Teste se o usuário pode favoritar um pokémon', () => {
     const {
       getByRole,
+      getByLabelText,
     } = renderWithRouter(<PokemonDetails
       isPokemonFavoriteById={ favorite }
       pokemons={ pokemons }
       match={ { params: { id: '4' } } }
       onUpdateFavoritePokemons={ () => {} }
     />);
-    const checkbox = getByRole('checkbox');
+    const checkbox = getByLabelText('Pokémon favoritado?');
+    // const checkbox = getByRole('checkbox');
     expect(checkbox).toBeInTheDocument();
     expect(checkbox.checked).toBeTruthy();
     fireEvent.change(checkbox, { target: { checked: false } });
