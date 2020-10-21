@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, queryByRole } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import PokemonDetails from '../components/PokemonDetails';
 import pokemons from './helpers/favoriteData';
 import favorite from './helpers/favoritePokemons';
@@ -11,7 +11,7 @@ describe('7. Testando o arquivo PokemonDetails.js', () => {
       getByRole,
       queryByRole,
       getByText,
-      history
+      history,
     } = renderWithRouter(<PokemonDetails
       isPokemonFavoriteById={ favorite }
       pokemons={ pokemons }
@@ -73,7 +73,6 @@ describe('7. Testando o arquivo PokemonDetails.js', () => {
   it('Teste se o usuário pode favoritar um pokémon', () => {
     const {
       getByRole,
-      getByText,
     } = renderWithRouter(<PokemonDetails
       isPokemonFavoriteById={ favorite }
       pokemons={ pokemons }
