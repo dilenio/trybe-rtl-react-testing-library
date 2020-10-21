@@ -72,7 +72,6 @@ describe('7. Testando o arquivo PokemonDetails.js', () => {
 
   it('Teste se o usuário pode favoritar um pokémon', () => {
     const {
-      getByRole,
       getByLabelText,
     } = renderWithRouter(<PokemonDetails
       isPokemonFavoriteById={ favorite }
