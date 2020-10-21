@@ -7,12 +7,10 @@ import favorite from './helpers/favoritePokemons';
 
 describe('6. Testando o arquivo Pokemon.js', () => {
   it('Teste se é renderizado um card com as informações de determinado pokémon', () => {
-    const { getByTestId, getByRole } = renderWithRouter(
-      <Pokemon
-        pokemon={ pokemons[0] }
-        isFavorite={ favorite[pokemons[0].id] }
-      />
-    );
+    const { getByTestId, getByRole } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ favorite[pokemons[0].id] }
+    />);
     const poke1 = getByTestId('pokemon-name');
     expect(poke1).toHaveTextContent(/Charmander/i);
     const poke1Average = getByTestId('pokemon-weight');
@@ -28,35 +26,29 @@ describe('6. Testando o arquivo Pokemon.js', () => {
   });
 
   it('Teste se o card do Pokémon indicado na Pokédex contém link de navegação', () => {
-    const { getByRole } = renderWithRouter(
-      <Pokemon
-        pokemon={ pokemons[0] }
-        isFavorite={ favorite[pokemons[0].id] }
-      />
-    );
+    const { getByRole } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ favorite[pokemons[0].id] }
+    />);
     const detailsLink = getByRole('link', { href: '/pokemons/4' });
     expect(detailsLink).toBeInTheDocument();
   });
 
   it('Teste se ao clicar no link do Pokémon, é feito redirecionamento', () => {
-    const { getByRole, history } = renderWithRouter(
-      <Pokemon
-        pokemon={ pokemons[0] }
-        isFavorite={ favorite[pokemons[0].id] }
-      />
-    );
+    const { getByRole } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ favorite[pokemons[0].id] }
+    />);
     const detailsLink = getByRole('link', { href: '/pokemons/4' });
     expect(detailsLink).toBeInTheDocument();
   });
 
   it('Teste também se a URL exibida no navegador muda para /pokemon/<id>', () => {
-    const { getByRole, history } = renderWithRouter(
-      <Pokemon
-        pokemon={ pokemons[0] }
-        isFavorite={ favorite[pokemons[0].id] }
-      />
-    );
-    const pathname = history.location.pathname;
+    const { getByRole, history } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ favorite[pokemons[0].id] }
+    />);
+    const { pathname } = history.location;
     expect(pathname).toBe('/');
     const detailsLink = getByRole('link', { href: '/pokemons/4' });
     expect(detailsLink).toBeInTheDocument();
@@ -65,12 +57,10 @@ describe('6. Testando o arquivo Pokemon.js', () => {
   });
 
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
-    const { getByRole, history } = renderWithRouter(
-      <Pokemon
-        pokemon={ pokemons[0] }
-        isFavorite={ favorite[pokemons[0].id] }
-      />
-    );
+    const { getByRole } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ favorite[pokemons[0].id] }
+    />);
     const star = getByRole('img', {
       name: 'Charmander is marked as favorite',
       src: '/star-icon.svg',
