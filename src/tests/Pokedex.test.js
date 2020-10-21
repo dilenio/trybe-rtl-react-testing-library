@@ -49,4 +49,51 @@ describe('5. Testando o arquivo Pokedex.js', () => {
       expect(poke1).toHaveTextContent(element);
     });
   });
+
+  it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    const { getByRole, queryByText } = renderWithRouter(<Pokedex
+      pokemons={ pokemons }
+      isPokemonFavoriteById={ favorite }
+    />);
+    const btn = getByRole('button', { name: 'All' });
+    expect(btn).toBeDefined();
+    fireEvent.click(btn);
+    const nextBtn = getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextBtn).toBeDefined();
+    fireEvent.click(nextBtn);
+    const poke2 = queryByText(/Pikachu/i);
+    expect(poke2).toBeInTheDocument();
+    fireEvent.click(nextBtn);
+    const poke1 = queryByText(/Charmander/i);
+    expect(poke1).toBeInTheDocument();
+  });
+
+  it('Teste se é criado, dinamicamente, um botão de filtro para cada tipo', () => {
+    const { getByRole, getByTestId } = renderWithRouter(<Pokedex
+      pokemons={ pokemons }
+      isPokemonFavoriteById={ favorite }
+    />);
+    const allBtn = getByRole('button', { name: 'All' });
+    expect(allBtn).toBeDefined();
+    const pokeTypes = ['Fire', 'Electric'];
+    pokeTypes.forEach((typePoke) => {
+      const typeBtn = getByRole('button', { name: typePoke });
+      expect(typeBtn).toBeDefined();
+      fireEvent.click(typeBtn);
+      const pokemonType = getByTestId('pokemonType');
+      expect(pokemonType).toHaveTextContent(typePoke);
+    });
+  });
+
+  it('O botão Próximo pokémon deve ser desabilitado quando tiver um só pokémon', () => {
+    const { getByRole } = renderWithRouter(<Pokedex
+      pokemons={ pokemons }
+      isPokemonFavoriteById={ favorite }
+    />);
+    const fireBtn = getByRole('button', { name: 'Fire' });
+    expect(fireBtn).toBeDefined();
+    fireEvent.click(fireBtn);
+    const nextBtn = getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextBtn).toHaveAttribute('disabled');
+  });
 });
