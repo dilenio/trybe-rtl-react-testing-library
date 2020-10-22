@@ -2,8 +2,8 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import Pokemon from '../components/Pokemon';
-import pokemons from './helpers/favoriteData';
-import favorite from './helpers/favoritePokemons';
+import pokemons from './helpers/pokemonData';
+import favorite from './helpers/pokemonFavorite';
 
 describe('6. Testando o arquivo Pokemon.js', () => {
   it('Teste se é renderizado um card com as informações de determinado pokémon', () => {

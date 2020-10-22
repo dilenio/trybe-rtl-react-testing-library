@@ -1,7 +1,7 @@
 import React from 'react';
 import renderWithRouter from './helpers/renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
-import pokemons from './helpers/favoriteData';
+import pokemons from './helpers/pokemonData';
 
 describe('3. Testando o arquivo FavoritePokemons.js', () => {
   it('Teste se é exibido na tela a mensagem No favorite pokemon found', () => {

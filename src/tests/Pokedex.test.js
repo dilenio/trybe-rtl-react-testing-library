@@ -2,8 +2,8 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import Pokedex from '../components/Pokedex';
-import pokemons from './helpers/favoriteData';
-import favorite from './helpers/favoritePokemons';
+import pokemons from './helpers/pokemonData';
+import favorite from './helpers/pokemonFavorite';
 
 describe('5. Testando o arquivo Pokedex.js', () => {
   it('Teste se é exibido o próximo Pokémon da lista', () => {
