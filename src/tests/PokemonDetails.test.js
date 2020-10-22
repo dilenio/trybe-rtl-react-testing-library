@@ -75,7 +75,7 @@ describe('7. Testing PokemonDetails.js', () => {
 
     fireEvent.change(checkbox, { target: { checked: false } });
     expect(checkbox.checked).toBeFalsy();
-    
+
     fireEvent.change(checkbox, { target: { checked: true } });
     expect(checkbox.checked).toBeTruthy();
   });
