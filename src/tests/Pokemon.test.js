@@ -5,16 +5,18 @@ import Pokemon from '../components/Pokemon';
 import pokemons from './helpers/pokemonData';
 import favorite from './helpers/pokemonFavorite';
 
-describe('6. Testando o arquivo Pokemon.js', () => {
-  it('Teste se é renderizado um card com as informações de determinado pokémon', () => {
+describe('6. Testing the Pokemon.js file', () => {
+  it('A card with the information of a certain Pokémon is rendered', () => {
     const { getByTestId, getByRole } = renderWithRouter(<Pokemon
       pokemon={ pokemons[0] }
       isFavorite={ favorite[pokemons[0].id] }
     />);
     const poke1 = getByTestId('pokemon-name');
     expect(poke1).toHaveTextContent(/Charmander/i);
+
     const poke1Average = getByTestId('pokemon-weight');
     expect(poke1Average).toHaveTextContent('Average weight: 8.5 kg');
+
     const image = getByRole('img', {
       name: 'Charmander sprite',
       src: 'https://cdn.bulbagarden.net/upload/0/0a/Spr_5b_004.png',
@@ -25,7 +27,7 @@ describe('6. Testando o arquivo Pokemon.js', () => {
     );
   });
 
-  it('Teste se o card do Pokémon indicado na Pokédex contém link de navegação', () => {
+  it('The Pokémon card indicated on the Pokédex contains a navigation link', () => {
     const { getByRole } = renderWithRouter(<Pokemon
       pokemon={ pokemons[0] }
       isFavorite={ favorite[pokemons[0].id] }
@@ -34,7 +36,7 @@ describe('6. Testando o arquivo Pokemon.js', () => {
     expect(detailsLink).toBeInTheDocument();
   });
 
-  it('Teste se ao clicar no link do Pokémon, é feito redirecionamento', () => {
+  it('Clicking on the Pokémon link redirects to details page', () => {
     const { getByRole } = renderWithRouter(<Pokemon
       pokemon={ pokemons[0] }
       isFavorite={ favorite[pokemons[0].id] }
@@ -43,20 +45,22 @@ describe('6. Testando o arquivo Pokemon.js', () => {
     expect(detailsLink).toBeInTheDocument();
   });
 
-  it('Teste também se a URL exibida no navegador muda para /pokemon/<id>', () => {
+  it('The URL displayed in the browser changes to /pokemon/<id>', () => {
     const { getByRole, history } = renderWithRouter(<Pokemon
       pokemon={ pokemons[0] }
       isFavorite={ favorite[pokemons[0].id] }
     />);
     const { pathname } = history.location;
     expect(pathname).toBe('/');
+
     const detailsLink = getByRole('link', { href: '/pokemons/4' });
     expect(detailsLink).toBeInTheDocument();
+
     fireEvent.click(detailsLink);
     expect(history.location.pathname).toBe('/pokemons/4');
   });
 
-  it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
+  it('There is a star icon on favorite Pokémon', () => {
     const { getByRole } = renderWithRouter(<Pokemon
       pokemon={ pokemons[0] }
       isFavorite={ favorite[pokemons[0].id] }

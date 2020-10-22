@@ -5,7 +5,7 @@ import pokemons from './helpers/pokemonData';
 import favorite from './helpers/pokemonFavorite';
 import renderWithRouter from './helpers/renderWithRouter';
 
-describe('7. Testing PokemonDetails.js', () => {
+describe('7. Testing the PokemonDetails.js file', () => {
   it('Detailed Pokemon information is shown', () => {
     const {
       getByRole,
